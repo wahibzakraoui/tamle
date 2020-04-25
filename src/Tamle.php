@@ -1,10 +1,12 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace wahibzakraoui\tamle;
 
-class SkeletonClass
+use wahibzakraoui\tamle\Exceptions\TamleException;
+
+class Tamle
 {
     /**
      * Create a new Skeleton Instance
@@ -23,6 +25,10 @@ class SkeletonClass
      */
     public function echoPhrase(string $phrase): string
     {
-        return $phrase;
+        try {
+            throw new TamleException('exception happened');
+        } catch (TamleException $e) {
+            return $e->getMessage();
+        }
     }
 }
