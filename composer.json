@@ -1,18 +1,18 @@
 {
-    "name": ":vendor/:package_name",
+    "name": "wahibzakraoui/tamle",
     "type": "library",
-    "description": ":package_description",
+    "description": "Generate HTML5 tables from PHP using your predefined YAML templates without writing any Markup",
     "keywords": [
-        ":vendor",
-        ":package_name"
+        "wahibzakraoui",
+        "tamle"
     ],
-    "homepage": "https://github.com/:vendor/:package_name",
+    "homepage": "https://github.com/wahibzakraoui/tamle",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": ":author_website",
+            "name": "Wahib ZAKRAOUI",
+            "email": "admin@19dh.io",
+            "homepage": "https://github.com/wahibzakraoui",
             "role": "Developer"
         }
     ],
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            ":vendor\\:package_name\\": "src"
+            "wahibzakraoui\\tamle\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            ":vendor\\:package_name\\": "tests"
+            "wahibzakraoui\\tamle\\": "tests"
         }
     },
     "scripts": {
