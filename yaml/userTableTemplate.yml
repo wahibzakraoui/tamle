@@ -1,0 +1,26 @@
+table:
+    Class: table
+    Id: myTable
+    Data:
+        - something: value
+        - anotherThing: value2
+    Children:
+        thead:
+            Class: table
+            Id: myTable
+            Data:
+                - something: value
+                - anotherThing: value2
+            Children:
+                - th: userName
+                - th: firstName
+                - th: lastName
+                - th: active
+        tbody:
+            Class: table
+            Id: myTable
+            Data:
+                - something: value
+                - anotherThing: value2
+            Children:
+                - tr: [['td', 'wahibzakraoui'], ['td', 'Wahib']['td', 'Zakraoui'], ['td', 'Yes']]

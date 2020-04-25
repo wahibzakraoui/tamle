@@ -1,10 +1,12 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace wahibzakraoui\tamle;
 
-use wahibzakraoui\tamle\Exceptions\TamleException;
+use Donquixote\Cellbrush\Table\Table;
+use Exception;
+use Symfony\Component\Yaml\Yaml;
 
 class Tamle
 {
@@ -17,18 +19,46 @@ class Tamle
     }
 
     /**
-     * Friendly welcome
-     *
-     * @param string $phrase Phrase to return
-     *
-     * @return string Returns the phrase passed in
+     * Takes a YML file path and returns a PHP Array representation of the file
+     * @param string $path
+     * @return array
      */
-    public function echoPhrase(string $phrase): string
+    public function parseYamlToArray(string $path): array
     {
-        try {
-            throw new TamleException('exception happened');
-        } catch (TamleException $e) {
-            return $e->getMessage();
+        $str = '';
+        if (file_exists($path)) {
+            $file = fopen($path, 'r');
+            while (!feof($file)) {
+                $str .= fgets($file);
+            }
         }
+        if (!empty($str)) {
+            return Yaml::parse($str);
+        }
+        return [];
     }
+
+    /**
+     * @param array $array
+     * @return string
+     * @throws Exception
+     */
+    public function arrayToTable(array $array): string
+    {
+        if (is_array($array['table'])) {
+            try {
+                $table = Table::create()
+                    ->addRowNames(['row0', 'row1', 'row2'])
+                    ->addColNames(['col0', 'col1', 'col2'])
+                    ->td('row0', 'col0', 'Diag 0')
+                    ->td('row1', 'col1', 'Diag 1')
+                    ->td('row2', 'col2', 'Diag 2');
+                return $table->render();
+            } catch (Exception $e) {
+                die('Something wrong has happened @arrayToTable.');
+            }
+        }
+        return '';
+    }
+
 }
